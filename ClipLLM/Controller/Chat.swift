@@ -1,31 +1,20 @@
 import Foundation
 import SwiftUI
-import PhotosUI
 
 @MainActor
 class ChatController: ObservableObject{
     @Published var prompt: PromptModel = .init(prompt: "", model: "", system: "")
     @Published var sentPrompt: [String] = []
     @Published var receivedResponse: [String] = []
-    @Published var sentImages: [Image?] = []
-    @Published var chatHistory = ChatModel(model: "", messages: [])
-    @Published var tags: tagsParent?
-    @Published var disabledButton: Bool = true
-    @Published var disabledEditor: Bool = false
-    @Published var showingErrorPopover: Bool = false
     @Published var errorModel: ErrorModel = .init(showError: false, errorTitle: "", errorMessage: "")
-    @Published var expandOptions: Bool = false
-    @Published var photoPath: String = ""
-    @Published var photoBase64: String = ""
-    @Published var photoImage: Image?
+    @Published var body_content = ChatModel(model: "", messages: [])
+    @Published var tags: tagsParent?
+
     let ollamaController = OllamaController()
-    
     
     func getTags() {
         Task {
             do {
-                self.disabledButton = false
-                self.disabledEditor = false
                 self.errorModel.showError = false
                 self.tags = try await ollamaController.getLocalModels()
                 if(self.tags != nil){
@@ -52,35 +41,12 @@ class ChatController: ObservableObject{
             }
         }
     }
-    
-    func resetChat() {
-        self.sentPrompt = []
-        self.receivedResponse = []
-        self.sentImages = []
-        self.chatHistory = ChatModel(model: "", messages: [])
-        self.prompt.prompt = ""
-        self.prompt.system = ""
-        self.photoPath = ""
-        self.photoBase64 = ""
-        self.photoImage = nil
-    }
-    
+
     func send() {
         Task {
             do {
                 self.errorModel.showError = false
-                self.disabledEditor = true
-                
                 self.sentPrompt.append(self.prompt.prompt)
-                self.sentImages.append(self.photoImage ?? nil)
-                
-                self.chatHistory.model = self.prompt.model
-                self.chatHistory.messages.append(ChatMessage(role: "system", content: self.prompt.system))
-                if(self.photoPath == ""){
-                    self.chatHistory.messages.append(ChatMessage(role: "user", content: self.sentPrompt.last!))
-                }else{
-                    self.chatHistory.messages.append(ChatMessage(role: "user", content: self.sentPrompt.last!, images: [self.photoBase64]))
-                }
                 self.receivedResponse.append("")
                 
                 print("Sending request")
@@ -96,7 +62,11 @@ class ChatController: ObservableObject{
                 
                 let encoder = JSONEncoder()
                 encoder.keyEncodingStrategy = .convertToSnakeCase
-                request.httpBody = try encoder.encode(chatHistory)
+                self.body_content.model = self.prompt.model
+                self.body_content.messages.append(ChatMessage(role: "system", content: self.prompt.system))
+                self.body_content.messages.append(ChatMessage(role: "user", content: self.prompt.prompt))
+                
+                request.httpBody = try encoder.encode(self.body_content)
                 
                 let data: URLSession.AsyncBytes
                 let response: URLResponse
@@ -122,12 +92,7 @@ class ChatController: ObservableObject{
                     
                     self.receivedResponse[self.receivedResponse.count - 1].append(decoded.message.content)
                 }
-                self.chatHistory.messages.append(ChatMessage(role: "assistant", content: self.receivedResponse.last!))
-                self.disabledEditor = false
                 self.prompt.prompt = ""
-                self.photoPath = ""
-                self.photoImage = nil
-                self.photoBase64 = ""
             } catch let NetError.invalidURL(error) {
                 errorModel = invalidURLError(error: error)
             } catch let NetError.invalidData(error) {
@@ -141,6 +106,4 @@ class ChatController: ObservableObject{
             }
         }
     }
-    
-    
 }
