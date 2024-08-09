@@ -14,21 +14,7 @@
 		9C67D9982C64F89800092887 /* ClipLLMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9972C64F89800092887 /* ClipLLMTests.swift */; };
 		9C67D9A22C64F89800092887 /* ClipLLMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9A12C64F89800092887 /* ClipLLMUITests.swift */; };
 		9C67D9A42C64F89800092887 /* ClipLLMUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9A32C64F89800092887 /* ClipLLMUITestsLaunchTests.swift */; };
-		9C67D9BC2C65127B00092887 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9B22C65127A00092887 /* MenuItem.swift */; };
-		9C67D9BD2C65127B00092887 /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9B32C65127A00092887 /* Prompt.swift */; };
-		9C67D9BE2C65127B00092887 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9B42C65127A00092887 /* Response.swift */; };
-		9C67D9BF2C65127B00092887 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9B62C65127B00092887 /* Menu.swift */; };
-		9C67D9C02C65127B00092887 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9B82C65127B00092887 /* Chat.swift */; };
-		9C67D9C12C65127B00092887 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9B92C65127B00092887 /* Model.swift */; };
-		9C67D9C22C65127B00092887 /* Ollama.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9BA2C65127B00092887 /* Ollama.swift */; };
-		9C67D9C42C659DEA00092887 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9C32C659DE900092887 /* ErrorModel.swift */; };
-		9C67D9C72C659E8B00092887 /* DefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9C52C659E8B00092887 /* DefaultValues.swift */; };
-		9C67D9C82C659E8B00092887 /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9C62C659E8B00092887 /* ErrorMessages.swift */; };
-		9C67D9CA2C659F2700092887 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9C92C659F2700092887 /* NetworkErrors.swift */; };
-		9C67D9CC2C659F8B00092887 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9CB2C659F8B00092887 /* Tags.swift */; };
-		9C67D9D02C65CE4300092887 /* ChatTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9CF2C65CE4300092887 /* ChatTest.swift */; };
-		9C67D9D22C65DFCD00092887 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9D12C65DFCD00092887 /* DataModel.swift */; };
-		9C67D9D52C65E00500092887 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9D42C65E00500092887 /* MenuBarView.swift */; };
+		9C67D9D72C65EB6200092887 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67D9D62C65EB6200092887 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,21 +46,7 @@
 		9C67D99D2C64F89800092887 /* ClipLLMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClipLLMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C67D9A12C64F89800092887 /* ClipLLMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipLLMUITests.swift; sourceTree = "<group>"; };
 		9C67D9A32C64F89800092887 /* ClipLLMUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipLLMUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9C67D9B22C65127A00092887 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
-		9C67D9B32C65127A00092887 /* Prompt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prompt.swift; sourceTree = "<group>"; };
-		9C67D9B42C65127A00092887 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		9C67D9B62C65127B00092887 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		9C67D9B82C65127B00092887 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		9C67D9B92C65127B00092887 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		9C67D9BA2C65127B00092887 /* Ollama.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ollama.swift; sourceTree = "<group>"; };
-		9C67D9C32C659DE900092887 /* ErrorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
-		9C67D9C52C659E8B00092887 /* DefaultValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultValues.swift; sourceTree = "<group>"; };
-		9C67D9C62C659E8B00092887 /* ErrorMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
-		9C67D9C92C659F2700092887 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
-		9C67D9CB2C659F8B00092887 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
-		9C67D9CF2C65CE4300092887 /* ChatTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTest.swift; sourceTree = "<group>"; };
-		9C67D9D12C65DFCD00092887 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		9C67D9D42C65E00500092887 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		9C67D9D62C65EB6200092887 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,11 +97,8 @@
 		9C67D9842C64F89700092887 /* ClipLLM */ = {
 			isa = PBXGroup;
 			children = (
-				9C67D9D32C65DFE600092887 /* Views */,
-				9C67D9BB2C65127B00092887 /* Controller */,
-				9C67D9B52C65127A00092887 /* Models */,
-				9C67D9B72C65127B00092887 /* Utils */,
 				9C67D9852C64F89700092887 /* ClipLLMApp.swift */,
+				9C67D9D62C65EB6200092887 /* Models.swift */,
 				9C67D9872C64F89700092887 /* ContentView.swift */,
 				9C67D9892C64F89800092887 /* Assets.xcassets */,
 				9C67D98B2C64F89800092887 /* ClipLLM.entitlements */,
@@ -150,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				9C67D9972C64F89800092887 /* ClipLLMTests.swift */,
-				9C67D9CF2C65CE4300092887 /* ChatTest.swift */,
 			);
 			path = ClipLLMTests;
 			sourceTree = "<group>";
@@ -162,48 +130,6 @@
 				9C67D9A32C64F89800092887 /* ClipLLMUITestsLaunchTests.swift */,
 			);
 			path = ClipLLMUITests;
-			sourceTree = "<group>";
-		};
-		9C67D9B52C65127A00092887 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				9C67D9C32C659DE900092887 /* ErrorModel.swift */,
-				9C67D9B22C65127A00092887 /* MenuItem.swift */,
-				9C67D9B32C65127A00092887 /* Prompt.swift */,
-				9C67D9B42C65127A00092887 /* Response.swift */,
-				9C67D9CB2C659F8B00092887 /* Tags.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		9C67D9B72C65127B00092887 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				9C67D9D12C65DFCD00092887 /* DataModel.swift */,
-				9C67D9C52C659E8B00092887 /* DefaultValues.swift */,
-				9C67D9C62C659E8B00092887 /* ErrorMessages.swift */,
-				9C67D9B62C65127B00092887 /* Menu.swift */,
-				9C67D9C92C659F2700092887 /* NetworkErrors.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		9C67D9BB2C65127B00092887 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9C67D9B82C65127B00092887 /* Chat.swift */,
-				9C67D9B92C65127B00092887 /* Model.swift */,
-				9C67D9BA2C65127B00092887 /* Ollama.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		9C67D9D32C65DFE600092887 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9C67D9D42C65E00500092887 /* MenuBarView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,22 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C67D9C42C659DEA00092887 /* ErrorModel.swift in Sources */,
-				9C67D9D52C65E00500092887 /* MenuBarView.swift in Sources */,
-				9C67D9BF2C65127B00092887 /* Menu.swift in Sources */,
-				9C67D9CC2C659F8B00092887 /* Tags.swift in Sources */,
-				9C67D9C22C65127B00092887 /* Ollama.swift in Sources */,
-				9C67D9C72C659E8B00092887 /* DefaultValues.swift in Sources */,
-				9C67D9D22C65DFCD00092887 /* DataModel.swift in Sources */,
-				9C67D9BC2C65127B00092887 /* MenuItem.swift in Sources */,
-				9C67D9C02C65127B00092887 /* Chat.swift in Sources */,
-				9C67D9BD2C65127B00092887 /* Prompt.swift in Sources */,
+				9C67D9D72C65EB6200092887 /* Models.swift in Sources */,
 				9C67D9882C64F89700092887 /* ContentView.swift in Sources */,
-				9C67D9CA2C659F2700092887 /* NetworkErrors.swift in Sources */,
-				9C67D9C82C659E8B00092887 /* ErrorMessages.swift in Sources */,
 				9C67D9862C64F89700092887 /* ClipLLMApp.swift in Sources */,
-				9C67D9BE2C65127B00092887 /* Response.swift in Sources */,
-				9C67D9C12C65127B00092887 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +273,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C67D9982C64F89800092887 /* ClipLLMTests.swift in Sources */,
-				9C67D9D02C65CE4300092887 /* ChatTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

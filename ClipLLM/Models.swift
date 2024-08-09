@@ -3,7 +3,14 @@ import Foundation
 // Struct to decode the JSON response
 struct Response: Codable {
     let model: String
-    let response: String
+    let created_at: String
+    let message: Message
+    let done: Bool
+}
+
+struct Message: Codable {
+    let role: String
+    let content: String
 }
 
 // Class for managing application data and network communication
@@ -24,7 +31,7 @@ class DataInterface: ObservableObject, Observable {
         isSending = true  // Mark that a sending process has started
         
         // Define the server endpoint
-        let urlString = "http://127.0.0.1:11434/api/generate"
+        let urlString = "http://127.0.0.1:11434/api/chat"
         // Safely unwrap the URL constructed from the urlString
         guard let url = URL(string: urlString) else { return }
         
@@ -33,10 +40,9 @@ class DataInterface: ObservableObject, Observable {
         request.httpMethod = "POST"  // Set the HTTP method to POST
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")  // Set the content type to JSON
         let body: [String: Any] = [
-            "model": "llama3",  // Specify the model to be used
-            "prompt": prompt,  // Pass the prompt
-            "options": [
-                "num_ctx": 4096  // Specify context options
+            "model": "gemma2:2b",  // Specify the model to be used
+            "messages": [
+                ["role": "user", "content": prompt]  // Pass the prompt as a message
             ]
         ]
         // Encode the request body as JSON
@@ -57,21 +63,24 @@ class DataInterface: ObservableObject, Observable {
             }
             
             let decoder = JSONDecoder()  // Initialize JSON decoder
-            let lines = data.split(separator: 10)  // Split the data into lines
-            var responses = [String]()  // Array to hold the decoded responses
+            var fullResponse = ""
             
-            // Iterate over each line of data
-            for line in lines {
-                if let jsonLine = try? decoder.decode(Response.self, from: Data(line)) {
-                    responses.append(jsonLine.response)  // Decode each line and append the response
+            do {
+                let lines = String(data: data, encoding: .utf8)?.components(separatedBy: .newlines) ?? []
+                for line in lines where !line.isEmpty {
+                    if let lineData = line.data(using: .utf8) {
+                        let decodedResponse = try decoder.decode(Response.self, from: lineData)
+                        fullResponse += decodedResponse.message.content
+                    }
                 }
-            }
-            
-            print(responses)  // Log all responses
-            
-            DispatchQueue.main.async {
-                self.response = responses.joined(separator: "")  // Combine all responses into one string
-                print(self.response)  // Print the full response
+                DispatchQueue.main.async {
+                    self.response = fullResponse  // Set the response to the full content
+                    print(self.response)  // Print the full response
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.response = "Error decoding response: \(error.localizedDescription)"
+                }
             }
         }.resume()  // Resume the task if it was suspended
     }
