@@ -1,4 +1,6 @@
 import Foundation
+import AppKit
+import SwiftUI
 
 // Struct to decode the JSON response
 struct Response: Codable {
@@ -22,7 +24,17 @@ class DataInterface: ObservableObject, Observable {
     @Published var response: String = ""
     // Track whether a network request is currently being sent
     @Published var isSending: Bool = false
-
+    
+    @Published var clipboardContent: String = ""
+    @Published var showActionButtons: Bool = false
+    @Published var actionResult: String = ""
+    
+    private var hideButtonsTimer: Timer?
+    
+    init() {
+        setupClipboardMonitoring()
+    }
+    
     // Function to handle sending the prompt to a server
     func sendPrompt() {
         print("Started Send Prompt")  // Log the start of sending a prompt
@@ -83,5 +95,51 @@ class DataInterface: ObservableObject, Observable {
                 }
             }
         }.resume()  // Resume the task if it was suspended
+    }
+    
+    func setupClipboardMonitoring() {
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
+            if event.modifierFlags.contains(.command) && event.keyCode == 8 { // 'C' key
+                DispatchQueue.main.async {
+                    self.handleCopyAction()
+                }
+            }
+            return event
+        }
+    }
+    
+    func handleCopyAction() {
+        if let copiedString = NSPasteboard.general.string(forType: .string) {
+            self.clipboardContent = copiedString
+            self.showActionButtons = true
+            
+            // Hide buttons after 3 seconds
+            self.hideButtonsTimer?.invalidate()
+            self.hideButtonsTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
+                self.showActionButtons = false
+            }
+        }
+    }
+    
+    func performAction(_ action: String) {
+        let actionPrompt: String
+        switch action {
+        case "Polish":
+            actionPrompt = "Polish the following text: \(clipboardContent)"
+        case "Summarize":
+            actionPrompt = "Summarize the following text: \(clipboardContent)"
+        case "Proofread":
+            actionPrompt = "Proofread the following text and suggest corrections: \(clipboardContent)"
+        default:
+            return
+        }
+        
+        self.prompt = actionPrompt
+        sendPrompt()
+        
+        // Update actionResult with the response
+        DispatchQueue.main.async {
+            self.actionResult = self.response
+        }
     }
 }

@@ -67,17 +67,6 @@ struct ContentView: View {
                             .keyboardShortcut(.return)
                             
                             Button(action: {
-                                Clipboard.setText(appModel.response)
-                            }) {
-                                Text("Copy")
-                                    .fontWeight(.semibold)
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .controlSize(.large)
-                            .keyboardShortcut("c", modifiers: [.command, .shift])
-                            .disabled(appModel.response.isEmpty)
-                            
-                            Button(action: {
                                 appModel.prompt = ""
                                 appModel.response = ""
                             }) {
@@ -106,11 +95,6 @@ struct ContentView: View {
                                         Text(appModel.response)
                                             .font(.body)
                                             .frame(maxWidth: .infinity, alignment: .leading)
-                                            .padding()
-                                    } else {
-                                        Text("No response received yet.")
-                                            .foregroundColor(.secondary)
-                                            .frame(maxWidth: .infinity, alignment: .center)
                                             .padding()
                                     }
                                 }
@@ -197,11 +181,6 @@ struct ContentView: View {
         }
         .onReceive(timer) { _ in
             updateClipboardContent()
-        }
-        .onChange(of: appModel.isSending) { newValue in
-            if !newValue {
-                isResponseVisible = true
-            }
         }
     }
 
