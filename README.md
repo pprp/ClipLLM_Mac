@@ -22,7 +22,7 @@ To install ClipLLM, follow these steps:
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/yourusername/ClipLLM.git
+   git clone https://github.com/pprp/ClipLLM.git
    ```
 
 2. Navigate to the project directory:
@@ -69,5 +69,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - [cursor.ai](https://cursor.ai) for providing the development tools.
 - [Ollama](https://ollama.com) for powering the local LLM.
+- [MyMacLLaMA](https://github.com/carlosmbe/MyMacLLAMA) for providing the prototype of this repo.
 
-For more information, please visit our [GitHub repository](https://github.com/yourusername/ClipLLM).
+For more information, please visit our [GitHub repository](https://github.com/pprp/ClipLLM).
